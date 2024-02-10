@@ -96,7 +96,7 @@ export default function RegisterScreen({ navigation }) {
           <TextInput
             placeholder="username"
             onChangeText={(value) => setUsername(value)}
-            value={firstname}
+            value={username}
             style={globalCSS.input}
           />
           <TextInput
