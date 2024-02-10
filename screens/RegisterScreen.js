@@ -43,23 +43,22 @@ export default function RegisterScreen({ navigation }) {
   const [description, setDescription] = useState("");
 
 // fct btn connect via backend
-  const handleRegister = async () => {
-  
-  await  addUser_ws(
-        {username,
-          firstname,
-        lastname,
+  const handleRegister = () => {
+    fetch('https://backend-one-nu-35.vercel.app/users/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        username, 
         email,
+        password,
         isDogOwner,
         isProfessional,
-        password,
         city,
-        description}
-      )
-      .then((response) => response.json())
+       }),
+    }).then((response) => response.json())
       .then((data) => {
         if (data.result) {
-          dispatch(infoUser({ username, firstname,email, isDogOwner, isProfessional, city, token: data.token }));
+          dispatch(infoUser({ username, email, isDogOwner, isProfessional, city, token: data.token }));
           setUsername("");
           setFirstname("");
           setLastname("");

@@ -40,7 +40,7 @@ export default function LoginScreen({ navigation }) {
 // fct btn connect via backend
   const handleConnect = () => {
     /* 'https://backend-one-nu-35.vercel.app/' */
-    fetch(`${BASE_URL}/users/signin`, {
+    fetch('https://backend-one-nu-35.vercel.app/users/signin', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }), 
