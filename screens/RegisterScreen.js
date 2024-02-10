@@ -91,7 +91,7 @@ export default function RegisterScreen({ navigation }) {
           style={styles.image}
           source={require("../assets/ccLogoColor.png")}
         />
-        <Text style={globalCSS.stitle}>Bienvenue !</Text>
+        <Text style={globalCSS.stitle}>`Bienvenue! isDogOwner: ${isDogOwner} isProfessional: ${isProfessional}`</Text>
         <View style={styles.formContent}>
           <TextInput
             placeholder="username"
