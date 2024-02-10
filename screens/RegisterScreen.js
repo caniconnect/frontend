@@ -94,6 +94,12 @@ export default function RegisterScreen({ navigation }) {
         <Text style={globalCSS.stitle}>Bienvenue !</Text>
         <View style={styles.formContent}>
           <TextInput
+            placeholder="username"
+            onChangeText={(value) => setUsername(value)}
+            value={firstname}
+            style={globalCSS.input}
+          />
+          <TextInput
             placeholder="prénom"
             onChangeText={(value) => setFirstname(value)}
             value={firstname}
