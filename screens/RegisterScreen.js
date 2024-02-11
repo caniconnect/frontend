@@ -70,7 +70,7 @@ export default function RegisterScreen({ navigation }) {
           setDescription("");
           navigation.navigate("TabNavigator");
         } else {
-          Alert.alert("Oups !", `un pb est survenu : ${data.error}`);
+          Alert.alert("Oups !", `un pb est survenu : ${data.error} ${isDogOwner} ${isProfessional}`);
           
         }})
         
