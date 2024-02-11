@@ -48,12 +48,12 @@ export default function RegisterScreen({ navigation }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 
-        username, 
-        email,
-        password,
-        isDogOwner,
-        isProfessional,
-        city,
+        username: username, 
+        email: email,
+        password: password,
+        isDogOwner: isDogOwner,
+        isProfessional: isProfessional,
+        city: city,
        }),
     }).then((response) => response.json())
       .then((data) => {
