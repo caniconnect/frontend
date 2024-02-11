@@ -38,7 +38,7 @@ export default function RegisterScreen({ navigation }) {
   const [city, setCity] = useState("");
   const[isDogOwner, setIsDogOwner] = useState(true);
   const toggleSwitchDogOwner = ()=> setIsDogOwner(!isDogOwner);
-  const [isProfessional, setIsProfessional] = useState(false);
+  const [isProfessional, setIsProfessional] = useState(true);
   const toggleSwitchProfessional = () => setIsProfessional(!isProfessional);
   const [description, setDescription] = useState("");
 
