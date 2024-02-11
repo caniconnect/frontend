@@ -37,9 +37,9 @@ export default function RegisterScreen({ navigation }) {
   const [password, setPassword] = useState("");
   const [city, setCity] = useState("");
   const[isDogOwner, setIsDogOwner] = useState(true);
-  const toggleSwitchDogOwner = ()=> setIsDogOwner(previewsState => !previewsState);
+  const toggleSwitchDogOwner = ()=> setIsDogOwner(!isDogOwner);
   const [isProfessional, setIsProfessional] = useState(false);
-  const toggleSwitchProfessional = () => setIsProfessional((previewsState) => !previewsState);
+  const toggleSwitchProfessional = () => setIsProfessional(!isProfessional);
   const [description, setDescription] = useState("");
 
 // fct btn connect via backend
