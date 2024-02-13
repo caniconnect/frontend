@@ -51,8 +51,8 @@ export default function RegisterScreen({ navigation }) {
       city:city,
     };
     console.log(userData);
-    
-      if (registerUser_webSrv(userData).result) {
+    const fct = registerUser_webSrv(userData);
+      if (fct.result) {
         dispatch(
           infoUser({
             username,
