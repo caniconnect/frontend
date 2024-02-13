@@ -51,9 +51,8 @@ export default function RegisterScreen({ navigation }) {
       city:city,
     };
     console.log(userData);
-    const data = registerUser_webSrv(userData);
-      console.log("data in screen", data);
-      if (data.result) {
+    
+      if (registerUser_webSrv(userData).result) {
         dispatch(
           infoUser({
             username,
@@ -75,7 +74,7 @@ export default function RegisterScreen({ navigation }) {
       } else {
         Alert.alert("Oups !", `un pb est survenu : ${data.error}`);
       }
-    ;
+    
         
   };
 
