@@ -13,7 +13,7 @@ export const registerUser_webSrv = (userData) => {
   })
     .then((response) => {
       console.log(response);
-      return response.json();
+      /* return response.json(); */
     })
 
     .then((data) => {
