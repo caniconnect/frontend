@@ -54,9 +54,9 @@ export default function PromenadeRechercheScreen ({ navigation }) {
   const [currentPosition, setCurrentPosition] = useState({latitude: -16.5, longitude: -151.74});
   const [scrollerData, setScrollerData] = useState([]);
   const [selectedMarkersHighlighted, setSelectedMarkersHighlighted] = useState(null);
-  
+  const [selectedEvent, setSelectedEvent] = useState("65dba90dd8aa1db1c00273fc");
  
-  useEffect(() => {
+  /* useEffect(() => {
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -68,7 +68,7 @@ export default function PromenadeRechercheScreen ({ navigation }) {
       }
     })();
     console.log("currentPosition:", currentPosition);
-  }, []);
+  }, []); */
 
   //Fonction envoyée en props à la card WalkEventSearchCard pour utilisation en inverse data flow
   // pour les actions à faire lors d'un appui sur une card.
@@ -158,15 +158,16 @@ export default function PromenadeRechercheScreen ({ navigation }) {
         }   
         let eventID = event._id;
         let eventName = event.eventName;
-        let tempCoord = (event.walkID.itinerary.map((coord, j) => {
-          dispatch(addMapPositionCentered({latitude: coord.lat, longitude: coord.lon}));
-          dispatch(addAllMarkersCoord({ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon}));
+        let tempCoord = (event.walkID.itinerary.map((coord, j, arr) => {
+          //j === arr.length - 1 && dispatch(addMapPositionCentered({latitude: coord.lat, longitude: coord.lon}));
+          //dispatch(addAllMarkersCoord({ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon}));
           return  <Marker 
                     key={i-j} 
                     coordinate={{ latitude: coord.lat, longitude: coord.lon }} 
                     pinColor={color}    
                     eventName={eventName}
-                    eventID={eventID}         
+                    eventID={eventID} 
+                    opacity={selectedEvent === eventID ? 1: 0 }        
                   />;
           }));
           dispatch(addMarkers(tempCoord));

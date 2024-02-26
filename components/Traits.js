@@ -9,7 +9,7 @@ const TraitsComponent = () => {
 
   useEffect(() => {
     dispatch(fetchTraitsAsync());
-  }, [dispatch]);
+  }, []);
 
   return (
     <View>
