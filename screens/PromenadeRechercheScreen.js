@@ -163,7 +163,8 @@ export default function PromenadeRechercheScreen ({ navigation }) {
         let eventName = event.eventName;
         setMarkers((event.walkID.itinerary.map((coord, j, array) => {
           j === array.length - 1 && dispatch(addMapPositionCentered({latitude: coord.lat, longitude: coord.lon}));
-          setAllMarkersCoord(...allMarkersCoord,{ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon});
+          setAllMarkersCoord([{...allMarkersCoord},{ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon}]);
+          console.log("allMarkersCoord", allMarkersCoord)
           return  <Marker 
                     key={i-j} 
                     coordinate={{ latitude: coord.lat, longitude: coord.lon }} 
@@ -173,6 +174,7 @@ export default function PromenadeRechercheScreen ({ navigation }) {
                   />;
           })));
           //dispatch(addMarkers(tempCoord));
+          console.log("markers", markers)
       });
     }
   }; // fin de la fct handleSearch
