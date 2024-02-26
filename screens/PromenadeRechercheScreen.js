@@ -54,6 +54,9 @@ export default function PromenadeRechercheScreen ({ navigation }) {
   const [currentPosition, setCurrentPosition] = useState({latitude: -16.5, longitude: -151.74});
   const [scrollerData, setScrollerData] = useState([]);
   const [selectedMarkersHighlighted, setSelectedMarkersHighlighted] = useState(null);
+  const [allMarkersCoord, setAllMarkersCoord] = useState([]);
+  const [markers, setMarkers] = useState([]);
+  
   
  
   useEffect(() => {
@@ -73,7 +76,7 @@ export default function PromenadeRechercheScreen ({ navigation }) {
   //Fonction envoyée en props à la card WalkEventSearchCard pour utilisation en inverse data flow
   // pour les actions à faire lors d'un appui sur une card.
   const selectEventCard = (cardId,cardName) => {
-    let allMarkersCoord = walk.allMarkersCoord;
+    //let allMarkersCoord = walk.allMarkersCoord;
     let markerKey = 0;
     setSelectedMarkersHighlighted (
       allMarkersCoord.map((markersCoord) => {
@@ -158,9 +161,9 @@ export default function PromenadeRechercheScreen ({ navigation }) {
         }   
         let eventID = event._id;
         let eventName = event.eventName;
-        let tempCoord = (event.walkID.itinerary.map((coord, j) => {
-          dispatch(addMapPositionCentered({latitude: coord.lat, longitude: coord.lon}));
-          dispatch(addAllMarkersCoord({ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon}));
+        setMarkers((event.walkID.itinerary.map((coord, j, array) => {
+          j === array.length - 1 && dispatch(addMapPositionCentered({latitude: coord.lat, longitude: coord.lon}));
+          setAllMarkersCoord(...allMarkersCoord,{ eventID: eventID, eventName: eventName, latitude: coord.lat, longitude: coord.lon});
           return  <Marker 
                     key={i-j} 
                     coordinate={{ latitude: coord.lat, longitude: coord.lon }} 
@@ -168,13 +171,13 @@ export default function PromenadeRechercheScreen ({ navigation }) {
                     eventName={eventName}
                     eventID={eventID}         
                   />;
-          }));
-          dispatch(addMarkers(tempCoord));
+          })));
+          //dispatch(addMarkers(tempCoord));
       });
     }
   }; // fin de la fct handleSearch
   
-  let markers = walk.markers;
+  //let markers = walk.markers;
   let positionCentered = walk.mapPositionCentered;
 
     return (
